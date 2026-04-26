@@ -1,70 +1,7 @@
-# preguntas_rapidas
+# executive
 
-PREGUNTAS TRA - SEGURIDAD DE APLICACIONES
-Basado en OWASP ASVS + SBS 504
-==========================================
+The request was presented related to APM number “BBLX – Reporte Crediticio de Deudores (RCD) – Credi Scotia Financiera (CSF)”. The application team requested the urgent prioritization of a firewall port opening for port “9055”, associated with the new BCRP (Banco Central de Reserva del Perú) IP address “190.81.38.207”.
+The urgency of this request was driven by a regulatory compliance requirement: the service is responsible for transmitting mandatory financial reporting documents to the BCRP, and the recent IP address change on the regulator’s side disrupted the existing connectivity, putting the institution at risk of non-compliance. The team affirmed that any delay beyond the required timelines exposes the organization to regulatory findings and potential financial penalties.
+As part of the security review, it was identified that the file transmission to the BCRP is currently being performed through WinSCP, an SFTP client that does not align with the bank’s approved and standardized file transfer tooling. The bank’s security standards require the use of managed and auditable transfer solutions such as Control-M, which provides enhanced security controls, logging, and governance capabilities that WinSCP lacks.
+Given the regulatory nature of the request and the time constraints involved, the Security Advisory team exceptionally accepted the request and supported the authorization to allow the transmission via WinSCP on a temporary basis. This exception was granted under the condition that the application team formally submits the corresponding EPM (Entry Point Management) documentation, enabling the Security team to initiate a full Threat and Risk Assessment (TRA-SM) of the current file transfer architecture. The objective of this TRA is to assess the risks associated with the use of WinSCP and to define a remediation path towards the adoption of Control-M as the approved transfer mechanism.
  
-1. AUTENTICACIÓN Y GESTIÓN DE SESIONES
----------------------------------------
-1. ¿Cómo se implementa la autenticación de usuarios? ¿MFA obligatorio?
-2. ¿Qué mecanismo se usa para gestionar sesiones (JWT, cookies, tokens)?
-3. ¿Cuál es el tiempo de expiración de sesión activa e inactiva?
-4. ¿Cómo se invalidan sesiones al cerrar sesión o cambiar contraseña?
-5. ¿Existe protección contra fuerza bruta o bloqueo de cuenta?
-6. ¿Las contraseñas se almacenan con hashing seguro (bcrypt, Argon2)?
- 
-2. AUTORIZACIÓN Y CONTROL DE ACCESO
---------------------------------------
-7. ¿Cómo se implementa el control de acceso? ¿RBAC, ABAC, ACL?
-8. ¿Se valida autorización en cada endpoint del lado del servidor?
-9. ¿Existe riesgo de IDOR (acceso a recursos de otro usuario por ID)?
-10. ¿Los usuarios pueden escalar privilegios horizontalmente o verticalmente?
-11. ¿Existe separación de ambientes (dev, QA, prod) con accesos distintos?
- 
-3. SEGURIDAD DE APIs
-----------------------
-12. ¿Las APIs exponen datos sensibles innecesarios en sus respuestas?
-13. ¿Existe rate limiting para prevenir abuso o DDoS a nivel de API?
-14. ¿Se validan y sanitizan todos los parámetros de entrada en la API?
-15. ¿Las APIs internas están protegidas igual que las externas?
-16. ¿Se usa TLS en todos los endpoints? ¿Qué versión mínima?
-17. ¿Cómo se gestiona el versionado y deprecación de endpoints?
- 
-4. MANEJO DE DATOS SENSIBLES
-------------------------------
-18. ¿Qué datos sensibles maneja la app? ¿PII, datos financieros, credenciales?
-19. ¿Los datos en tránsito y en reposo están cifrados?
-20. ¿Se aplica enmascaramiento o tokenización para datos de tarjetas (PAN)?
-21. ¿Los logs registran datos sensibles accidentalmente?
-22. ¿Existe una política de retención y eliminación segura de datos?
- 
-5. VALIDACIÓN DE ENTRADAS Y LÓGICA
--------------------------------------
-23. ¿Se validan entradas tanto del lado del cliente como del servidor?
-24. ¿Existe protección contra inyección SQL, NoSQL, LDAP, comandos OS?
-25. ¿Cómo se previene XSS en outputs renderizados al usuario?
-26. ¿Se procesan archivos subidos? ¿Qué validaciones existen sobre tipo y contenido?
-27. ¿Existe lógica de negocio susceptible a manipulación de parámetros?
- 
-6. INFRAESTRUCTURA Y DESPLIEGUE
----------------------------------
-28. ¿Dónde se despliega la app? ¿Cloud, on-premise, híbrido?
-29. ¿Existe WAF delante de la aplicación?
-30. ¿Los contenedores o instancias corren con el mínimo privilegio?
-31. ¿Cómo se gestionan los secretos y credenciales en el despliegue?
-32. ¿Existe un proceso de gestión de parches y vulnerabilidades de dependencias?
- 
-7. LOGGING, MONITOREO E INCIDENTES
--------------------------------------
-33. ¿Qué eventos se registran en logs? ¿Intentos de login, cambios de privilegio, errores?
-34. ¿Los logs son inmutables y están centralizados (SIEM)?
-35. ¿Existe alertamiento ante comportamientos anómalos?
-36. ¿Cuál es el RTO/RPO ante un incidente de seguridad?
-37. ¿Existe un playbook de respuesta a incidentes para esta aplicación?
- 
-8. GESTIÓN DE TERCEROS Y CADENA DE SUMINISTRO
-------------------------------------------------
-38. ¿La app consume APIs o librerías de terceros? ¿Se revisa su seguridad?
-39. ¿Se realiza análisis de composición de software (SCA) sobre dependencias?
-40. ¿Los proveedores externos tienen acceso directo a datos o sistemas internos?
-41. ¿Existe un proceso de due diligence de seguridad para nuevos proveedores?
