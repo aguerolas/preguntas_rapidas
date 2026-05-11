@@ -1,1 +1,3 @@
 # executive
+
+Since file transfers to the BCRP are performed manually through WinSCP, the process relies entirely on direct human interaction, from session initiation to file selection and submission. This introduces inherent dependencies on individual user actions that are not governed by automated controls or standardized procedures. Additionally, the use of a standalone SFTP client outside the bank’s managed tooling ecosystem means that credential handling, access control, and transfer activity are not subject to centralized oversight or audit mechanisms. These characteristics form the basis for the risks identified in the assessment below.
