@@ -1,1 +1,3 @@
 # executive
+
+Dado que estas aplicaciones gestionan procesos críticos del negocio y manejan información sensible de clientes y operaciones financieras, resulta indispensable llevar a cabo una evaluación de seguridad que permita determinar su postura actual, identificar posibles vulnerabilidades y establecer los controles necesarios para garantizar su confidencialidad, integridad, disponibilidad y continuidad operativa dentro del nuevo ecosistema corporativo
