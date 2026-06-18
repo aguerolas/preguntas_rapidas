@@ -1,2 +1,7 @@
 # executive
 
+Durante el análisis del ecosistema, identifiqué que la financiera opera un proceso de replicación de datos de tarjetas desde el Core BT hacia el Switch, donde se mantiene un card file consolidado que alimenta las autorizaciones de tarjetas de débito Mastercard. Este proceso se realiza mediante full refresh o partial refresh periódicos, lo que genera ventanas de inconsistencia durante las cuales el card file puede quedar con datos incompletos o viciados, incluyendo el PAN. La recomendación técnica, alineada con la práctica de Scotiabank y las capacidades de Evertech como proveedor, es migrar a un modelo de replicación event-driven donde cada cambio de estado en el Core gatille una actualización inmediata al Switch.
+
+Durante las conversaciones técnicas identifiqué que ambos BINs — el del banco y el de la financiera — comparten la misma llave criptográfica en el HSM. Esto significa que un compromiso de esa llave afectaría a ambas entidades simultáneamente, y que separar los BINs post-adquisición implicaría también separar y rotar las llaves en el HSM, lo cual no es un proceso trivial.
+
+Finalmente, confirmé que la financiera opera con 3DES en los puntos de captura de PIN, específicamente en POS, ATMs y ventanillas. Si bien esto es un diseño válido para PIN Block encryption, PCI-DSS v4.0 exige la migración a AES, por lo que deberá contemplarse un plan de migración de terminales como parte del proceso de integración.
