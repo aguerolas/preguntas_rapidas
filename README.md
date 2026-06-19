@@ -1,7 +1,40 @@
 # executive
 
-Durante el análisis del ecosistema, identifiqué que la financiera opera un proceso de replicación de datos de tarjetas desde el Core BT hacia el Switch, donde se mantiene un card file consolidado que alimenta las autorizaciones de tarjetas de débito Mastercard. Este proceso se realiza mediante full refresh o partial refresh periódicos, lo que genera ventanas de inconsistencia durante las cuales el card file puede quedar con datos incompletos o viciados, incluyendo el PAN. La recomendación técnica, alineada con la práctica de Scotiabank y las capacidades de Evertech como proveedor, es migrar a un modelo de replicación event-driven donde cada cambio de estado en el Core gatille una actualización inmediata al Switch.
+Here is the translation to English:
 
-Durante las conversaciones técnicas identifiqué que ambos BINs — el del banco y el de la financiera — comparten la misma llave criptográfica en el HSM. Esto significa que un compromiso de esa llave afectaría a ambas entidades simultáneamente, y que separar los BINs post-adquisición implicaría también separar y rotar las llaves en el HSM, lo cual no es un proceso trivial.
+---
 
-Finalmente, confirmé que la financiera opera con 3DES en los puntos de captura de PIN, específicamente en POS, ATMs y ventanillas. Si bien esto es un diseño válido para PIN Block encryption, PCI-DSS v4.0 exige la migración a AES, por lo que deberá contemplarse un plan de migración de terminales como parte del proceso de integración.
+**Applications Assessments:**
+
+- **BG6D - Digital Key CSF:**
+  - Enroll clients to the digital key, manage clients affiliated with the digital key, request and validate OTP with CAMS. The application architecture is being referenced in Annex A.
+
+- **BBJ8 - Intranet Portal CSF:**
+  - Web platform that centralizes information and communication systems for employees. The application architecture is being referenced in Annex B.
+
+- **BG6F - Relationship Start (Onboarding) CSF (FC):**
+  - Processes and procedures to allow the onboarding of individuals and companies. The application architecture is being referenced in Annex C.
+
+- **BGCB - CRS + FATCA (CSF) (L1)**
+  - Processes and procedures to comply with CRS and FATCA legislation at Crediscotia. The application architecture is being referenced in Annex D.
+
+- **BBLF - SPRING (Web, C/S) – Credi Scotia Financiera (CSF)**
+  - Application that allows recording billing and payment transactions as part of the purchase of services and products. It is accessed through the browser. The application architecture is being referenced in Annex E.
+
+- **BBHL - Editran CSF**
+  - Application that allows recording operations and invoice payments as part of the purchase of services and products. It is accessed through the browser. The application architecture is being referenced in Annex F.
+
+- **BGFY - Mobile Wallet**
+  - Application that allows processing transactions carried out through the mobile wallet channel, enables processing of cell phone top-ups, cash in, cash out, and transfers. The application architecture is being referenced in Annex G.
+
+- **BJVS - Withholdings Web**
+  - Web application that allows recording the benefits of credit card clients in order to build customer loyalty. The application architecture is being referenced in Annex H.
+
+- **BHPD - Physical Security Access CSF**
+  - Access controller monitoring system. The application architecture is being referenced in Annex I.
+
+- **BHPF - CCTV Physical Security CSF**
+  - CCTV Monitoring System. The application architecture is being referenced in Annex J.
+
+- **BBFG - Access Management System (SGA) – CSF**
+  - Application that allows the management and access control for other applications. The application architecture is being referenced in Annex K.
