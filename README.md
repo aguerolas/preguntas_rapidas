@@ -1,14 +1,14 @@
 # executive
 
-backgroung
-Crediscotia, a financial institution previously part of the Scotiabank group, has been sold to Santander Consumer Bank. In this context, the Sterling MFT information transfer initiative is being developed to send Santander Consumer information from SQL and DB2 (AIX and iSeries) databases to Santander, using the existing Linux SFTP server and the Connect Direct service (Sterling MFT). The solution proposed by SBP is being adapted to CrediScotia's infrastructure/architecture.
-
-The purpose of this TRA is to assess the cybersecurity risks associated with the Sterling MFT file transfer initiative from CrediScotia systems to Santander Consumer Bank via a dedicated Linux SFTP server. The primary identified risk involves a privileged service account (local admin) that can access sensitive data and execute processes on the server. Mitigating controls include Logical Access Control permissions management and the use of service accounts rather than named user accounts. The overall residual risk level is rated Medium, with a target rating of Medium-Low once remediation actions are implemented
-
-
-BJG3 – Sterling Secure File Transfer – Perú
-Sending information from the various CSF platforms and services to the SFTP server (Linux) in a planned, progressive, and coordinated manner. Retrieval of information temporarily stored on the SFTP service by the external entity Santander Consumer Bank.
-
-
-The overall risk of this assessment is rated as Medium. The identified risks involve the possible loss or unavailability of information due to privileged permissions. However, mitigation controls prevent data leaks or the materialization of the risk. This contributes to the overall risk level of all identified risks being medium.
-
+IS&C Access Control Standards; Least Privilege Principle
+The service account used by the Sterling MFT application has been granted local admin (privileged) permissions on the Linux SFTP server. This allows the account to access sensitive data and execute tasks or processes on the server beyond what is necessary for the application's function.
+Impact: High Likelihood: High Inherent Rating: High
+Loss of confidential information or unauthorized access due to the service account having privileged permissions (local admin) that allow it to access sensitive data and execute tasks or processes on the server.
+1. Permissions will be granted by Logical Access Control. 2. Service account used by the application and not by named users.
+Impact: High Likelihood: Medium-Low Residual Rating: Medium
+No
+Analyze the specific permissions that the application user requires and limit the permissions, removing the local admin privileged permission.
+To be indicated
+Screenshots of updated permission configuration in the Linux SFTP server confirming removal of local admin privileges from the service account.
+Miguel Angel Bastidas Parco – IT Engineering Senior Manager
+Refers to the risk rating after the action plan is implemented. Target Rating: Medium-Low Target Impact: High Target Likelihood: Low
