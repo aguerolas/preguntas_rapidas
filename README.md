@@ -1,1 +1,2 @@
 # executive
+Updated application architecture documentation from Otilio confirming the reduced privilege model for the Sterling MFT service account; configuration evidence on the Linux SFTP server showing removal of local admin/sudoers access; functional testing report validating that Sterling MFT continues to operate correctly under the reduced permissions; and final sign-off from the IT Engineering Senior Manager confirming closure
