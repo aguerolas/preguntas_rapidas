@@ -1,2 +1,1 @@
 # executive
-The plan for the Santander applications is to decommission the APMs, revoke user access, disable application functionality, and decommission the servers once the TSA period ends (if extended, the plan extends accordingly). This is because support with the banking entity SCB will conclude, and no data from the third-party entity will continue to be stored or processed.
