@@ -1,3 +1,3 @@
 # executive
 
-This risk registry was created by mistake, as the TRA originally recorded two risks. As instructed by my superior, the TRA was corrected to reflect only one risk. This record was not updated accordingly in Service Now. Closing this risk.
+Please note that only one risk applies to this TRA. Risk registry TRARSK0019784 was closed, as it was determined that this risk did not need to be included and should be disregarded
