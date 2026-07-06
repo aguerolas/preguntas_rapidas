@@ -1,2 +1,3 @@
 # executive
 
+Pérdida de información confidencial o acceso no autorizado debido a que la cuenta de servicio tiene permisos privilegiados (administrador local en el servidor Linux SFTP) que le permiten acceder a datos confidenciales y ejecutar tareas o procesos en el servidor. Además, a través de la autoridad SECADM en el AS/400 (iSeries), la cuenta puede crear usuarios y objetos sin autorización de LAC, lo que podría permitir el aprovisionamiento no autorizado de acceso, la creación de cuentas fuera del flujo estándar y cambios no autorizados en la plataforma.
