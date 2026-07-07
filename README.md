@@ -1,5 +1,4 @@
 # executive
 
-The Sterling MFT application's service account has been granted admin permissions on the CSF source systems (SQL Server, DB2 databases, and file servers). This means the account can access sensitive data and run processes on these systems well beyond what the application actually needs.
-On the AS/400 (iSeries) side, things are worse. The same account has SECADM special authority, which gives it broad privileges over AS/400 objects. This allows it to create users and objects directly, without going through the Logical Access Control (LAC) team. Normally, LAC is the only team authorized to approve and create new users.
-The result is that access and object creation happen outside the established governance controls, which creates a clear gap in the access-control framework.
+Risk Description
+Loss of confidential information or unauthorized access. The service account has admin permissions on the SQL Server and DB2 databases and file servers, so it can access sensitive data and run processes on those systems with no real restrictions. On top of that, the account has SECADM authority on the AS/400 (iSeries), which means it can create users and objects without any LAC approval. This opens the door to unauthorized access provisioning, rogue user accounts created outside the standard process, and unauthorized changes on the platform.
