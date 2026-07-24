@@ -1,2 +1,3 @@
 # executive
 
+Applications are currently deployed on Scotiabank infrastructure as part of the TSA (Transition Services Agreement). The evaluation is conducted in the context of the transition to the Santander Consumer ecosystem. The scope of the evaluation is based on the list of legacy applications provided by Crediscotia. No formal TDD (Technical Design Document) documentation was available. The information used for this assessment was obtained from written communications, meetings, and other available documentation; only this information was used as the basis for the evaluation.
