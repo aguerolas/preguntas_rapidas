@@ -1,13 +1,9 @@
 # executive
 
-En la iniciativa de Actualización Masiva de Datos de Contactabilidad de clientes en VCAS el tema es que entre junio 2022 y mayo 2024 se deshabilitó el canal digital que permitía afiliar y actualizar la Clave Dinámica, y desde entonces los datos de contacto de nuestros clientes (teléfono, correo) dejaron de actualizarse automáticamente en VCAS.
+Role design and entitlements for these applications were inherited from the pre-transition setup and continue to operate on top of the Scotiabank platform’s own privileged-access controls under the TSA. No evidence has been found in the documentation formally validating the role design of each legacy application after the transition, which is what Control Defect #1 records here.
 
-VCAS es el servicio de Visa (3D Secure) que usamos para autenticar las compras online — cuando un cliente compra por internet, VCAS es quien genera y/o envía el OTP al cliente para validar la transacción. El tema es que si el dato de contacto que tiene VCAS está desactualizado (por ejemplo porque el cliente renovó su tarjeta o perdió el plástico y actualizó sus datos con nosotros, pero eso nunca llegó a VCAS), el OTP se manda al canal equivocado o simplemente no llega, y el cliente no puede terminar su compra.
+Authorization roles were carried over unchanged from the pre-transition setup and are enforced by each application’s own authorization layer within the Scotiabank OnPrem environment inherited under the TSA. No new roles or permission schemes were created as part of the transition.
 
-Esto nos está generando abandono en el proceso de autenticación, transacciones no concretadas, y reclamos. Y como la SBS exige autenticación reforzada para operaciones digitales (Resolución 2286-2024 y el Reglamento de Seguridad de la Información 504-2021), estamos en falta si no lo resolvemos.
+Access to these applications is mediated by the identity and access management services inherited from the Scotiabank environment under the TSA. Together with the network segmentation in place, this limits service and workload level exposure. No new interfaces or integrations were added during the transition
 
-El objetivo es restablecer la actualización automática de esos datos hacia VCAS, para que la autenticación funcione bien, mejore la experiencia del cliente y reduzcamos el riesgo operacional y regulatorio.
-
-La solución que estamos definiendo es un proceso batch mensual, donde Scotiabank sube un archivo con la información de contacto actualizada de los clientes a VCAS a través de un canal SFTP (que nos da el cifrado y seguridad en el transporte). Ya tenemos 3 historias de usuario mapeadas: (1) que los datos se sincronicen automáticamente vía batch, (2) que el cliente reciba el OTP correctamente con esos datos actualizados, y (3) habilitar el canal SFTP para que el equipo de tarjetas pueda cargar el archivo mensualmente.
-
-Todavía nos falta: aprobar el Business Case, confirmar si la iniciativa entra en el plan anual, definir fechas de compromiso, y cerrar algunos puntos de seguridad de la información (cifrado, integridad del archivo, manejo de credenciales, trazabilidad/logs de cada carga) dado que estamos manejando datos personales de clientes y esto está enmarcado como una iniciativa de mitigación de riesgos.
+Entitlements are administered through the roles inherited from before the transition, on top of the Scotiabank platform’s own privileged-access controls under the TSA. Users hold the access their business role requires and nothing broader.
