@@ -1,9 +1,3 @@
 # executive
 
-1. Role design and entitlement management (pág. 7)
-
-Role design and entitlement management for these applications was previously governed by a centralized access management system that is no longer part of the current environment. As this system is no longer applicable, role design and entitlement management falls outside the scope of this assessment.
-
-2. Authorization enforcement (RBAC, ABAC, policy) (pág. 6)
-
-Authorization enforcement for these applications was previously governed by a centralized access management system that is no longer part of the current environment. As this system is no longer applicable, authorization enforcement falls outside the scope of this assessment.
+The overall risk of this assessment is rated as Medium. The residual risk rating is assessed as Medium based on the control deficiencies identified, given that the system manages deferred interbank transfers to the Electronic Clearing House (CCE) and processes confidential regulatory data under critical availability and continuity requirements. Three of the four deficiencies carry a Medium-Low residual once compensating controls are taken into account; however, Control Defect #4 (absence of SAST coverage for in-house developed components) remains at Medium. The lack of static application security testing, combined with the absence of corporate identity integration for EDITRAN SIGNON and excessive privileges on the service account, results in exposure of confidential financial information, unauthorized manipulation of transfer files, or compromise of the EDITRAN servers.
